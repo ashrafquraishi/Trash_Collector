@@ -14,7 +14,7 @@ namespace TrashCollecter.Migrations
 
         protected override void Seed(TrashCollecter.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            //  This method will be called after migrating to the latest version.   
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
@@ -22,7 +22,7 @@ namespace TrashCollecter.Migrations
                 new Microsoft.AspNet.Identity.EntityFramework.IdentityRole {Name = "Employee" },
                 new Microsoft.AspNet.Identity.EntityFramework.IdentityRole { Name = "Customer" }
 
-                );
+        );
         }
     }
 }

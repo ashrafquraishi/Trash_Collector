@@ -30,7 +30,6 @@ namespace TrashCollecter.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<TrashCollecter.Models.EmployeeModel> EmployeeModels { get; set; }
 
         public System.Data.Entity.DbSet<TrashCollecter.Models.CustomerModels> CustomerModels { get; set; }
     }

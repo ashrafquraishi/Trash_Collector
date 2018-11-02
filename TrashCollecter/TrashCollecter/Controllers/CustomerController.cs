@@ -10,19 +10,24 @@ using TrashCollecter.Models;
 
 namespace TrashCollecter.Controllers
 {
-    public class CustomerModelsController : Controller
+    public class CustomerController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CustomerModels
         public ActionResult Index()
         {
-            return View(db.CustomerModels.ToList());
-        }
 
+            //var userEmail = User.Identity.Name;
+            //var customer = db..Include(a => a.Customer).Include(d => d.Day).Single(c => c.Customer.Email == userEmail);
+            return View();
+
+
+        }
+    
         // GET: CustomerModels/Details/5
         public ActionResult Details(int? id)
-        {
+        {                                                                                                                                                                                                                                                                                                                                  
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -38,6 +43,7 @@ namespace TrashCollecter.Controllers
         // GET: CustomerModels/Create
         public ActionResult Create()
         {
+            ViewBag.Id = new SelectList(db.Users, "Id", "Name");
             return View();
         }
 
@@ -113,7 +119,7 @@ namespace TrashCollecter.Controllers
             db.CustomerModels.Remove(customerModels);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
+        }  
 
         protected override void Dispose(bool disposing)
         {

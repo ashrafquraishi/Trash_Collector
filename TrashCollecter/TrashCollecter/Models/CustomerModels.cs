@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,19 +12,13 @@ namespace TrashCollecter.Models
     {
         [Key]
         public int Id { get; set; }
-        [Display(Name = "First Name")]
+        [Required]
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
-        [Display(Name = "Last Name")]
+
         public string LastName { get; set; }
-        [Display(Name = "Date Of Birth")]
-        public DateTime DateOfBirth { get; set; }
-        public string Address { get; set; }
-        [Display(Name = "Zip Code")]
-        public int ZipCode { get; set; }
-        [ForeignKey("SchedulePickUp")]
-        [Display(Name = "Schedule Trash Pickup")]
-         public int TrashPickUpId { get; set; }
-        public SchedulePickUp SchedulePickUp { get; set; }
+        public string Email { get; set; }
+        public decimal Balance { get; set; }
 
 
 

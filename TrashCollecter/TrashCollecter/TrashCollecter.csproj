@@ -195,8 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CustomerModelsController.cs" />
-    <Compile Include="Controllers\EmployeeModelsController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,14 +205,17 @@
     <Compile Include="Migrations\201810261600433_Roles.Designer.cs">
       <DependentUpon>201810261600433_Roles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811021244042_Updated model.cs" />
+    <Compile Include="Migrations\201811021244042_Updated model.Designer.cs">
+      <DependentUpon>201811021244042_Updated model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddressModel.cs" />
     <Compile Include="Models\CustomerModels.cs" />
-    <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\Daymodel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\SchedulePickUp.cs" />
-    <Compile Include="Models\StopPickupModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -276,16 +278,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\EmployeeModels\Create.cshtml" />
-    <Content Include="Views\EmployeeModels\Delete.cshtml" />
-    <Content Include="Views\EmployeeModels\Details.cshtml" />
-    <Content Include="Views\EmployeeModels\Edit.cshtml" />
-    <Content Include="Views\EmployeeModels\Index.cshtml" />
-    <Content Include="Views\CustomerModels\Create.cshtml" />
-    <Content Include="Views\CustomerModels\Delete.cshtml" />
-    <Content Include="Views\CustomerModels\Details.cshtml" />
-    <Content Include="Views\CustomerModels\Edit.cshtml" />
-    <Content Include="Views\CustomerModels\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -306,6 +307,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810261600433_Roles.resx">
       <DependentUpon>201810261600433_Roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811021244042_Updated model.resx">
+      <DependentUpon>201811021244042_Updated model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

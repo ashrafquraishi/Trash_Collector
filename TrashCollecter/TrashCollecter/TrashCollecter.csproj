@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201811021429106_Final migrations.Designer.cs">
       <DependentUpon>201811021429106_Final migrations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812131731293_Cutomer Updated.cs" />
+    <Compile Include="Migrations\201812131731293_Cutomer Updated.Designer.cs">
+      <DependentUpon>201812131731293_Cutomer Updated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressModel.cs" />
@@ -282,11 +286,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Employees\Create.cshtml" />
-    <Content Include="Views\Employees\Delete.cshtml" />
-    <Content Include="Views\Employees\Details.cshtml" />
-    <Content Include="Views\Employees\Edit.cshtml" />
-    <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
@@ -317,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811021429106_Final migrations.resx">
       <DependentUpon>201811021429106_Final migrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812131731293_Cutomer Updated.resx">
+      <DependentUpon>201812131731293_Cutomer Updated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

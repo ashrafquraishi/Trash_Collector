@@ -22,6 +22,8 @@ namespace TrashCollecter.Models
 
         public DateTime? VacationEnd { get; set; }
 
+
+
         public enum DayList
         {
             Monday = 1,

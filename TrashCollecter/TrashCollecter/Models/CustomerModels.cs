@@ -15,9 +15,14 @@ namespace TrashCollecter.Models
         [Required]
         [DisplayName("First Name")]
         public string FirstName { get; set; }
+        [DisplayName("Last Name")]
 
         public string LastName { get; set; }
+        [DisplayName("Email")]
+
         public string Email { get; set; }
+        public string Address { get; set; }
+        public int Zipcode { get; set; }
       //     public decimal Balance { get; set; }
       
 

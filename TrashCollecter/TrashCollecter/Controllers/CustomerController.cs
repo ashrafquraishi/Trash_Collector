@@ -20,7 +20,7 @@ namespace TrashCollecter.Controllers
 
             //var userEmail = User.Identity.Name;
             //var customer = db..Include(a => a.Customer).Include(d => d.Day).Single(c => c.Customer.Email == userEmail);
-            return View();
+            return View(db.CustomerModels.ToList());
 
 
         }
@@ -52,13 +52,13 @@ namespace TrashCollecter.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,DateOfBirth,Address,ZipCode")] CustomerModels customerModels)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email,Address,ZipCode,City,State,PickUpDay")] CustomerModels customerModels)
         {
             if (ModelState.IsValid)
             {
                 db.CustomerModels.Add(customerModels);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = customerModels.Id });
             }
 
             return View(customerModels);
@@ -67,15 +67,8 @@ namespace TrashCollecter.Controllers
         // GET: CustomerModels/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            
             CustomerModels customerModels = db.CustomerModels.Find(id);
-            if (customerModels == null)
-            {
-                return HttpNotFound();
-            }
             return View(customerModels);
         }
 
@@ -84,7 +77,7 @@ namespace TrashCollecter.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,DateOfBirth,Address,ZipCode")] CustomerModels customerModels)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Address,ZipCode,City,State,PickUpDay")] CustomerModels customerModels)
         {
             if (ModelState.IsValid)
             {

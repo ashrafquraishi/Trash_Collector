@@ -22,9 +22,22 @@ namespace TrashCollecter.Models
 
         public string Email { get; set; }
         public string Address { get; set; }
-        public int Zipcode { get; set; }
-      //     public decimal Balance { get; set; }
-      
+        [DisplayName("Zip Code")]
+
+        public string ZipCode { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        [DisplayName("Pick Up Date")]
+
+        public string PickUpDay { get; set; }
+
+        //public bool IsActive { get; set; }
+        //[ForeignKey("AddressModel")]
+        //public int AddressId { get; set; }
+        //public AddressModel AddressModel { get; set; }
+
+        //     public decimal Balance { get; set; }
+
 
 
 

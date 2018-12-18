@@ -11,17 +11,17 @@ namespace TrashCollecter.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Street { get; set; }
-        public string ZipCode { get; set; }
-        public bool IsActive { get; set; }
+        //public string Street { get; set; }
+        //public string ZipCode { get; set; }
+        //public bool IsActive { get; set; }
 
         [ForeignKey("Daymodel")]
         public int DayID { get; set; }
-        public Daymodel Day { get; set; }
+        public Daymodel DayModel { get; set; }
 
-        [ForeignKey("CustomeModels")]
+        [ForeignKey("CustomerModels")]
         public int CustomerID { get; set; }
-        public CustomerModels Customer { get; set; }
+        public CustomerModels CustomerModels { get; set; }
 
     }
 }

@@ -198,6 +198,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PickUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,6 +218,42 @@
     <Compile Include="Migrations\201812131731293_Cutomer Updated.Designer.cs">
       <DependentUpon>201812131731293_Cutomer Updated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812131810456_updated.cs" />
+    <Compile Include="Migrations\201812131810456_updated.Designer.cs">
+      <DependentUpon>201812131810456_updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812131825148_updatedDayMoel.cs" />
+    <Compile Include="Migrations\201812131825148_updatedDayMoel.Designer.cs">
+      <DependentUpon>201812131825148_updatedDayMoel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812131934321_made index view.cs" />
+    <Compile Include="Migrations\201812131934321_made index view.Designer.cs">
+      <DependentUpon>201812131934321_made index view.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812171620213_day model updated.cs" />
+    <Compile Include="Migrations\201812171620213_day model updated.Designer.cs">
+      <DependentUpon>201812171620213_day model updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812171634505_ddn.cs" />
+    <Compile Include="Migrations\201812171634505_ddn.Designer.cs">
+      <DependentUpon>201812171634505_ddn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812172005225_sd.cs" />
+    <Compile Include="Migrations\201812172005225_sd.Designer.cs">
+      <DependentUpon>201812172005225_sd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812172023121_asd.cs" />
+    <Compile Include="Migrations\201812172023121_asd.Designer.cs">
+      <DependentUpon>201812172023121_asd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812172109244_dsb.cs" />
+    <Compile Include="Migrations\201812172109244_dsb.Designer.cs">
+      <DependentUpon>201812172109244_dsb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812172117179_rg.cs" />
+    <Compile Include="Migrations\201812172117179_rg.Designer.cs">
+      <DependentUpon>201812172117179_rg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressModel.cs" />
@@ -224,6 +261,8 @@
     <Compile Include="Models\Daymodel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SpecialPickup.cs" />
+    <Compile Include="Controllers\SpecialPickupController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -288,8 +327,19 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
-    <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\PickUp\Delete.cshtml" />
+    <Content Include="Views\PickUp\Edit.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\PickUp\Details.cshtml" />
+    <Content Include="Views\PickUp\Index.cshtml" />
+    <Content Include="Views\PickUp\Create.cshtml" />
+    <Content Include="Views\SpecialPickup\Index.cshtml" />
+    <Content Include="Views\SpecialPickup\Details.cshtml" />
+    <Content Include="Views\SpecialPickup\Create.cshtml" />
+    <Content Include="Views\SpecialPickup\Edit.cshtml" />
+    <Content Include="Views\SpecialPickup\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -319,6 +369,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812131731293_Cutomer Updated.resx">
       <DependentUpon>201812131731293_Cutomer Updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812131810456_updated.resx">
+      <DependentUpon>201812131810456_updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812131825148_updatedDayMoel.resx">
+      <DependentUpon>201812131825148_updatedDayMoel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812131934321_made index view.resx">
+      <DependentUpon>201812131934321_made index view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812171620213_day model updated.resx">
+      <DependentUpon>201812171620213_day model updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812171634505_ddn.resx">
+      <DependentUpon>201812171634505_ddn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812172005225_sd.resx">
+      <DependentUpon>201812172005225_sd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812172023121_asd.resx">
+      <DependentUpon>201812172023121_asd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812172109244_dsb.resx">
+      <DependentUpon>201812172109244_dsb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812172117179_rg.resx">
+      <DependentUpon>201812172117179_rg.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

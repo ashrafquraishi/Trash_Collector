@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,22 +10,25 @@ namespace TrashCollecter.Models
     public class Daymodel
     {
         public int Id { get; set; }
-        [DisplayName("Pick Up Day")]
+       
+        //[DisplayName("PickUp Time")]
 
-        public string PickUpDay { get; set; }
-        [DisplayName("Change Pick Up Day")]
+        //public DateTime? PickUpTIme { get; set; }
+        [Display(Name = "Account Suspend Start Date")]
+       [DataType(DataType.Date)]
+       [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
+       public DateTime VacationStart { get; set; }
 
-        public DateTime? ChangePickUpDay { get; set; }
-        [DisplayName("Vacation Start")]
+       [Display(Name = "Account Suspend End Date")]
+       [DataType(DataType.Date)]
+       [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
+       public DateTime VacationEnd { get; set; }
+        //[DisplayName("End Subcription")]
 
-        public DateTime? VacationStart { get; set; }
-        [DisplayName("Vacation End")]
-
-        public DateTime? VacationEnd { get; set; }
+        //public bool IsActive { get; set; }
 
 
-
-        public enum DayList
+        public enum calender
         {
             Monday = 1,
             Tuesday,
@@ -32,7 +36,10 @@ namespace TrashCollecter.Models
             Thursday,
             Friday
         }
+        //public enum DateTime
+        //{
 
-        public DayList Days { get; set; }
+        //}
+        //public calender PickupDay { get; set; }
     }
 }

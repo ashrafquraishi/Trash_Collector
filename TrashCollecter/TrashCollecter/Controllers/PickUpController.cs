@@ -50,6 +50,7 @@ namespace TrashCollecter.Controllers
         {
             Daymodel daymodel = db.PickUp.Find(id);
             return View(daymodel);
+
         }
 
         // POST: PickUp/Edit/5
@@ -91,5 +92,6 @@ namespace TrashCollecter.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 }

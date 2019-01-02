@@ -18,14 +18,14 @@ namespace TrashCollecter.Models
        [DataType(DataType.Date)]
        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
        public DateTime VacationStart { get; set; }
-
+          
        [Display(Name = "Account Suspend End Date")]
        [DataType(DataType.Date)]
        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
        public DateTime VacationEnd { get; set; }
         //[DisplayName("End Subcription")]
 
-        //public bool IsActive { get; set; }
+        //public bool IsActive { get; set; }  
 
 
         public enum calender

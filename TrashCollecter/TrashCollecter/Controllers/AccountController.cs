@@ -171,7 +171,7 @@ namespace TrashCollecter.Controllers
                     }
                     else if (model.UserRole == "Employee")
                     {
-                        return RedirectToAction("Create", "EventOwnerModels");
+                        return RedirectToAction("Create", "SpecialPickup");
                     }
                     else
                     {

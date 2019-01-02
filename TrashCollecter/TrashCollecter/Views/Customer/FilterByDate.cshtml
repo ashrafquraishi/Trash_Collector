@@ -1,0 +1,13 @@
+﻿@model TrashCollecter.Models.CustomerModels
+
+@{
+    ViewBag.Title = "FilterByDate";
+}
+@using (Html.BeginForm())
+{
+
+    <p>
+        Enter Date: @Html.TextBox("date") <br />
+        <input type="submit" value="Filter" />
+    </p>
+}

@@ -102,6 +102,17 @@ namespace TrashCollecter.Controllers
             }
             return View(customerModels);
         }
+       // [HttpPost]
+        public ActionResult FilterByDate(string date)
+        {
+            var SearchDate = from m in db.CustomerModels
+                             select m;
+            if (!string.IsNullOrEmpty(date))
+            {
+                SearchDate = SearchDate.Where(s => s.PickUpDay.ToString().Contains(date));
+            }
+            return View(SearchDate);
+        }
 
         // POST: CustomerModels/Delete/5
         [HttpPost, ActionName("Delete")]

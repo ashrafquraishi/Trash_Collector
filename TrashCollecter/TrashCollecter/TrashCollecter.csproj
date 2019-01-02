@@ -196,6 +196,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PickUpController.cs" />
@@ -254,9 +255,21 @@
     <Compile Include="Migrations\201812172117179_rg.Designer.cs">
       <DependentUpon>201812172117179_rg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812181727264_Made Empoyee Model.cs" />
+    <Compile Include="Migrations\201812181727264_Made Empoyee Model.Designer.cs">
+      <DependentUpon>201812181727264_Made Empoyee Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812191608135_ss.cs" />
+    <Compile Include="Migrations\201812191608135_ss.Designer.cs">
+      <DependentUpon>201812191608135_ss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812191624503_hf.cs" />
+    <Compile Include="Migrations\201812191624503_hf.Designer.cs">
+      <DependentUpon>201812191624503_hf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\CustomerModels.cs" />
     <Compile Include="Models\Daymodel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -340,6 +353,13 @@
     <Content Include="Views\SpecialPickup\Create.cshtml" />
     <Content Include="Views\SpecialPickup\Edit.cshtml" />
     <Content Include="Views\SpecialPickup\Delete.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Employee\FilterByDate.cshtml" />
+    <Content Include="Views\Customer\FilterByDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -396,6 +416,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812172117179_rg.resx">
       <DependentUpon>201812172117179_rg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812181727264_Made Empoyee Model.resx">
+      <DependentUpon>201812181727264_Made Empoyee Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812191608135_ss.resx">
+      <DependentUpon>201812191608135_ss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812191624503_hf.resx">
+      <DependentUpon>201812191624503_hf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

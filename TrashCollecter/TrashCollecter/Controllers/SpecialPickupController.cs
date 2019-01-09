@@ -48,6 +48,7 @@ namespace TrashCollecter.Models
         }
         public ActionResult Create()
         {
+
             ViewBag.Id = new SelectList(db.SpecialPickups, "Id", "Name");
             return View();
         }

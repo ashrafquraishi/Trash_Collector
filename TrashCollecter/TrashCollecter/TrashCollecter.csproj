@@ -203,69 +203,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810261600433_Roles.cs" />
-    <Compile Include="Migrations\201810261600433_Roles.Designer.cs">
-      <DependentUpon>201810261600433_Roles.cs</DependentUpon>
+    <Compile Include="Migrations\201901082100361_thing2.cs" />
+    <Compile Include="Migrations\201901082100361_thing2.Designer.cs">
+      <DependentUpon>201901082100361_thing2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811021244042_Updated model.cs" />
-    <Compile Include="Migrations\201811021244042_Updated model.Designer.cs">
-      <DependentUpon>201811021244042_Updated model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811021429106_Final migrations.cs" />
-    <Compile Include="Migrations\201811021429106_Final migrations.Designer.cs">
-      <DependentUpon>201811021429106_Final migrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812131731293_Cutomer Updated.cs" />
-    <Compile Include="Migrations\201812131731293_Cutomer Updated.Designer.cs">
-      <DependentUpon>201812131731293_Cutomer Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812131810456_updated.cs" />
-    <Compile Include="Migrations\201812131810456_updated.Designer.cs">
-      <DependentUpon>201812131810456_updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812131825148_updatedDayMoel.cs" />
-    <Compile Include="Migrations\201812131825148_updatedDayMoel.Designer.cs">
-      <DependentUpon>201812131825148_updatedDayMoel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812131934321_made index view.cs" />
-    <Compile Include="Migrations\201812131934321_made index view.Designer.cs">
-      <DependentUpon>201812131934321_made index view.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812171620213_day model updated.cs" />
-    <Compile Include="Migrations\201812171620213_day model updated.Designer.cs">
-      <DependentUpon>201812171620213_day model updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812171634505_ddn.cs" />
-    <Compile Include="Migrations\201812171634505_ddn.Designer.cs">
-      <DependentUpon>201812171634505_ddn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812172005225_sd.cs" />
-    <Compile Include="Migrations\201812172005225_sd.Designer.cs">
-      <DependentUpon>201812172005225_sd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812172023121_asd.cs" />
-    <Compile Include="Migrations\201812172023121_asd.Designer.cs">
-      <DependentUpon>201812172023121_asd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812172109244_dsb.cs" />
-    <Compile Include="Migrations\201812172109244_dsb.Designer.cs">
-      <DependentUpon>201812172109244_dsb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812172117179_rg.cs" />
-    <Compile Include="Migrations\201812172117179_rg.Designer.cs">
-      <DependentUpon>201812172117179_rg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812181727264_Made Empoyee Model.cs" />
-    <Compile Include="Migrations\201812181727264_Made Empoyee Model.Designer.cs">
-      <DependentUpon>201812181727264_Made Empoyee Model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812191608135_ss.cs" />
-    <Compile Include="Migrations\201812191608135_ss.Designer.cs">
-      <DependentUpon>201812191608135_ss.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812191624503_hf.cs" />
-    <Compile Include="Migrations\201812191624503_hf.Designer.cs">
-      <DependentUpon>201812191624503_hf.cs</DependentUpon>
+    <Compile Include="Migrations\201901092001594_thing22.cs" />
+    <Compile Include="Migrations\201901092001594_thing22.Designer.cs">
+      <DependentUpon>201901092001594_thing22.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -358,8 +302,9 @@
     <Content Include="Views\Employee\Create.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
-    <Content Include="Views\Employee\FilterByDate.cshtml" />
-    <Content Include="Views\Customer\FilterByDate.cshtml" />
+    <Content Include="Views\Employee\FilterByWeekday.cshtml" />
+    <Content Include="Views\Employee\SelectWeekday.cshtml" />
+    <Content Include="Views\Employee\DefaultZip.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -378,53 +323,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810261600433_Roles.resx">
-      <DependentUpon>201810261600433_Roles.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901082100361_thing2.resx">
+      <DependentUpon>201901082100361_thing2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811021244042_Updated model.resx">
-      <DependentUpon>201811021244042_Updated model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811021429106_Final migrations.resx">
-      <DependentUpon>201811021429106_Final migrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812131731293_Cutomer Updated.resx">
-      <DependentUpon>201812131731293_Cutomer Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812131810456_updated.resx">
-      <DependentUpon>201812131810456_updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812131825148_updatedDayMoel.resx">
-      <DependentUpon>201812131825148_updatedDayMoel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812131934321_made index view.resx">
-      <DependentUpon>201812131934321_made index view.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812171620213_day model updated.resx">
-      <DependentUpon>201812171620213_day model updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812171634505_ddn.resx">
-      <DependentUpon>201812171634505_ddn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812172005225_sd.resx">
-      <DependentUpon>201812172005225_sd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812172023121_asd.resx">
-      <DependentUpon>201812172023121_asd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812172109244_dsb.resx">
-      <DependentUpon>201812172109244_dsb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812172117179_rg.resx">
-      <DependentUpon>201812172117179_rg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812181727264_Made Empoyee Model.resx">
-      <DependentUpon>201812181727264_Made Empoyee Model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812191608135_ss.resx">
-      <DependentUpon>201812191608135_ss.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812191624503_hf.resx">
-      <DependentUpon>201812191624503_hf.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901092001594_thing22.resx">
+      <DependentUpon>201901092001594_thing22.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

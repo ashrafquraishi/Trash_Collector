@@ -27,9 +27,12 @@ namespace TrashCollecter.Models
         public string ZipCode { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        [DisplayName("Pick Up Date")]
+        [DisplayName("Pick Up Day")]
 
-        public string PickUpDay { get; set; }
+        public DayOfWeek PickUpDay { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
         //public bool IsActive { get; set; }
         //[ForeignKey("AddressModel")]

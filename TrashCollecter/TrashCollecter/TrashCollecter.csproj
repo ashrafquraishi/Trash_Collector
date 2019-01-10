@@ -285,18 +285,14 @@
     <Content Include="Views\PickUp\Details.cshtml" />
     <Content Include="Views\PickUp\Index.cshtml" />
     <Content Include="Views\PickUp\Create.cshtml" />
-    <Content Include="Views\Employee\Index.cshtml" />
-    <Content Include="Views\Employee\Details.cshtml" />
-    <Content Include="Views\Employee\Create.cshtml" />
-    <Content Include="Views\Employee\Edit.cshtml" />
-    <Content Include="Views\Employee\Delete.cshtml" />
-    <Content Include="Views\Employee\FilterByWeekday.cshtml" />
-    <Content Include="Views\Employee\SelectWeekday.cshtml" />
-    <Content Include="Views\Employee\DefaultZip.cshtml" />
     <Content Include="Views\Customer\CreateSpecialPickup.cshtml" />
     <Content Include="Views\Customer\SpecialDetails.cshtml" />
     <Content Include="Views\Customer\AccountDetails.cshtml" />
     <Content Include="Views\Customer\SuspendingAccount.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\CustomerDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

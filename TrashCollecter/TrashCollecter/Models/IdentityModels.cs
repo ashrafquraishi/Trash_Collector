@@ -32,9 +32,9 @@ namespace TrashCollecter.Models
 
 
         public System.Data.Entity.DbSet<TrashCollecter.Models.CustomerModels> CustomerModels { get; set; }
-      
-      
-        
+        public System.Data.Entity.DbSet<TrashCollecter.Models.EmployeeModels> EmployeeModels { get; set; }
+
+
 
     }
 }

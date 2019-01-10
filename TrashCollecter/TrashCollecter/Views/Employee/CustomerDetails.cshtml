@@ -1,13 +1,13 @@
-﻿@model TrashCollecter.Models.EmployeeModels
+﻿@model TrashCollecter.Models.CustomerModels
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "CustomerDetails";
 }
 
-<h2>Details</h2>
+<h2>CustomerDetails</h2>
 
 <div>
-    <h4>EmployeeModels</h4>
+    <h4>CustomerModels</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -66,10 +66,49 @@
             @Html.DisplayFor(model => model.State)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.VacationStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacationStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacationEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacationEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialPickupDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialPickupDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Confirm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Confirm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUserId)
+        </dd>
 
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-   
+    @Html.ActionLink("Back to List", "Index")
 </p>

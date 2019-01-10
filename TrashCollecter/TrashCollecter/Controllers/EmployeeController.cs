@@ -1,23 +1,30 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TrashCollecter.Models;
 
 namespace TrashCollecter.Controllers
 {
     public class EmployeeController : Controller
     {
+        public ApplicationDbContext db = new ApplicationDbContext();
         // GET: Employee
         public ActionResult Index()
         {
-            return View();
+            return View(db.EmployeeModels.ToList());
         }
 
         // GET: Employee/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+
+            EmployeeModels employee = db.EmployeeModels.Find(id);
+
+
+            return View(employee);
         }
 
         // GET: Employee/Create
@@ -25,65 +32,86 @@ namespace TrashCollecter.Controllers
         {
             return View();
         }
-
-        // POST: Employee/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Include = " Id,FirstName,LastName,Email,Address,State,City,ZipCode")] EmployeeModels employee)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                var userId = User.Identity.GetUserId();
+                var currentUser = (from u in db.Users where u.Id == userId select u).First();
+                employee.ApplicationUserId = userId;
+
+                db.EmployeeModels.Add(employee);
+                db.SaveChanges();
+                return RedirectToAction("EmployeeTodayPickups", new { id = employee.Id });
             }
-            catch
-            {
-                return View();
-            }
+
+
+            return View(employee);
         }
+
 
         // GET: Employee/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? Id)
         {
-            return View();
+
+            EmployeeModels employee = db.EmployeeModels.Find(Id);
+
+            return View(employee);
         }
+
 
         // POST: Employee/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit([Bind(Include = " Id,FirstName,LastName,Email,Address,State,City,ZipCode")] EmployeeModels employee,int Id)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                EmployeeModels employees = db.EmployeeModels.Find(Id);
+                if (employees == null)
+                {
+                    return RedirectToAction("DisplayError", "Employee");
+                }
+                employees.FirstName = employee.FirstName;
+                employees.LastName = employee.LastName;
+                employees.Email = employee.Email;
+                employees.Address = employee.Address;
+                employees.State = employee.State;
+                employees.City = employee.City;
+                employees.ZipCode = employee.ZipCode;
+                db.SaveChanges();
+                return RedirectToAction("Details");
+            }
+            return View(employee);
+        
+    }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        public ActionResult CustomerDetails(int? id)
+        {
+            CustomerModels customer = null;
+            if (id == null)
             {
-                return View();
+               
+
+                var UserId = User.Identity.GetUserId();
+
+                customer = db.CustomerModels.Where(c => c.ApplicationUserId == UserId).FirstOrDefault();
+                return View(customer);
+
             }
+
+            else
+            {
+                customer = db.CustomerModels.Find(id);
+            }
+
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
         }
 
-        // GET: Employee/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Employee/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

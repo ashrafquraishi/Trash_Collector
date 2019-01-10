@@ -1,0 +1,28 @@
+﻿@model TrashCollecter.Models.CustomerModels
+
+@{
+    ViewBag.Title = "SpecialDetails";
+}
+
+<h2>SpecialDetails</h2>
+
+<div>
+    <h4>CustomerModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialPickupDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialPickupDate)
+        </dd>
+
+       
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditSpecial", new { id = Model.Id }) |
+   
+</p>

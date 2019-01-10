@@ -201,33 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901082100361_thing2.cs" />
-    <Compile Include="Migrations\201901082100361_thing2.Designer.cs">
-      <DependentUpon>201901082100361_thing2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901092001594_thing22.cs" />
-    <Compile Include="Migrations\201901092001594_thing22.Designer.cs">
-      <DependentUpon>201901092001594_thing22.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901101727488_test.cs" />
-    <Compile Include="Migrations\201901101727488_test.Designer.cs">
-      <DependentUpon>201901101727488_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901101736353_removed daymodel.cs" />
-    <Compile Include="Migrations\201901101736353_removed daymodel.Designer.cs">
-      <DependentUpon>201901101736353_removed daymodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901101746375_added special pickup in customer model.cs" />
-    <Compile Include="Migrations\201901101746375_added special pickup in customer model.Designer.cs">
-      <DependentUpon>201901101746375_added special pickup in customer model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901101813421_adding.cs" />
-    <Compile Include="Migrations\201901101813421_adding.Designer.cs">
-      <DependentUpon>201901101813421_adding.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901101822436_added nullables .cs" />
-    <Compile Include="Migrations\201901101822436_added nullables .Designer.cs">
-      <DependentUpon>201901101822436_added nullables .cs</DependentUpon>
+    <Compile Include="Migrations\201901101954259_test.cs" />
+    <Compile Include="Migrations\201901101954259_test.Designer.cs">
+      <DependentUpon>201901101954259_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -317,6 +293,7 @@
     <Content Include="Views\Employee\SelectWeekday.cshtml" />
     <Content Include="Views\Employee\DefaultZip.cshtml" />
     <Content Include="Views\Customer\CreateSpecialPickup.cshtml" />
+    <Content Include="Views\Customer\SpecialDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -335,26 +312,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901082100361_thing2.resx">
-      <DependentUpon>201901082100361_thing2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901092001594_thing22.resx">
-      <DependentUpon>201901092001594_thing22.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901101727488_test.resx">
-      <DependentUpon>201901101727488_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901101736353_removed daymodel.resx">
-      <DependentUpon>201901101736353_removed daymodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901101746375_added special pickup in customer model.resx">
-      <DependentUpon>201901101746375_added special pickup in customer model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901101813421_adding.resx">
-      <DependentUpon>201901101813421_adding.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901101822436_added nullables .resx">
-      <DependentUpon>201901101822436_added nullables .cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901101954259_test.resx">
+      <DependentUpon>201901101954259_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

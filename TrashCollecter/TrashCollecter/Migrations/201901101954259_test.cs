@@ -3,7 +3,7 @@ namespace TrashCollecter.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class thing2 : DbMigration
+    public partial class test : DbMigration
     {
         public override void Up()
         {
@@ -20,6 +20,10 @@ namespace TrashCollecter.Migrations
                         City = c.String(),
                         State = c.String(),
                         PickUpDay = c.Int(nullable: false),
+                        VacationStart = c.DateTime(),
+                        VacationEnd = c.DateTime(),
+                        SpecialPickupDate = c.DateTime(),
+                        Confirm = c.Boolean(),
                         ApplicationUserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
@@ -85,56 +89,6 @@ namespace TrashCollecter.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.EmployeeModels",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        Street = c.String(),
-                        ZipCode = c.String(),
-                        IsActive = c.Boolean(nullable: false),
-                        DayID = c.Int(),
-                        CustomerID = c.Int(),
-                        SpecialPickupID = c.Int(),
-                        ApplicationId = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
-                .ForeignKey("dbo.CustomerModels", t => t.CustomerID)
-                .ForeignKey("dbo.Daymodels", t => t.DayID)
-                .ForeignKey("dbo.SpecialPickups", t => t.SpecialPickupID)
-                .Index(t => t.DayID)
-                .Index(t => t.CustomerID)
-                .Index(t => t.SpecialPickupID)
-                .Index(t => t.ApplicationId);
-            
-            CreateTable(
-                "dbo.Daymodels",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        VacationStart = c.DateTime(nullable: false),
-                        VacationEnd = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.SpecialPickups",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        SpecialPickup1 = c.DateTime(nullable: false),
-                        ApplicationUserId = c.String(maxLength: 128),
-                        Address = c.String(),
-                        ZipCode = c.Int(nullable: false),
-                        ItemDescription = c.String(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
-                .Index(t => t.ApplicationUserId);
-            
-            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -149,21 +103,11 @@ namespace TrashCollecter.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.EmployeeModels", "SpecialPickupID", "dbo.SpecialPickups");
-            DropForeignKey("dbo.SpecialPickups", "ApplicationUserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.EmployeeModels", "DayID", "dbo.Daymodels");
-            DropForeignKey("dbo.EmployeeModels", "CustomerID", "dbo.CustomerModels");
-            DropForeignKey("dbo.EmployeeModels", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.CustomerModels", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.SpecialPickups", new[] { "ApplicationUserId" });
-            DropIndex("dbo.EmployeeModels", new[] { "ApplicationId" });
-            DropIndex("dbo.EmployeeModels", new[] { "SpecialPickupID" });
-            DropIndex("dbo.EmployeeModels", new[] { "CustomerID" });
-            DropIndex("dbo.EmployeeModels", new[] { "DayID" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -171,9 +115,6 @@ namespace TrashCollecter.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.CustomerModels", new[] { "ApplicationUserId" });
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.SpecialPickups");
-            DropTable("dbo.Daymodels");
-            DropTable("dbo.EmployeeModels");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");

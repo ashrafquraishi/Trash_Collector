@@ -139,31 +139,93 @@ namespace TrashCollecter.Controllers
 
         public ActionResult CreateSpecialPickup()
         {
+            
             return View();
         }
-        [HttpPost]
-        public ActionResult CreateSpecialPickup([Bind(Include = "SpecialPickupDate")]CustomerModels customerModels)
-        {
-            if (ModelState.IsValid)
-            {
 
+
+        [HttpPost]
+        public ActionResult CreateSpecialPickup([Bind(Include = "SpecialPickupDate")] CustomerModels customerModels)
+        {
+            
                 var userId = User.Identity.GetUserId();
                 customerModels.ApplicationUserId = userId;
-                var currentCstomer = (from c in db.CustomerModels where c.ApplicationUserId == userId select c).FirstOrDefault();
-                currentCstomer.SpecialPickupDate = customerModels.SpecialPickupDate;
-                
 
+                var currentCustomer = (from c in db.CustomerModels where c.ApplicationUserId == userId select c).FirstOrDefault();
+                currentCustomer.SpecialPickupDate = customerModels.SpecialPickupDate;
 
                 db.SaveChanges();
-                return RedirectToAction("DetailsOfSpecialPickup", new { id = customerModels.Id });
-            }
-
+                return RedirectToAction("SpecialDetails", new { id = customerModels.Id });
+            
 
             return View(customerModels);
         }
 
 
 
+
+
+
+
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult CreateSpecialPickup([Bind(Include = "SpecialPickupDate")]CustomerModels customerModels)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+
+        //        var userId = User.Identity.GetUserId();
+        //        customerModels.ApplicationUserId = userId;
+        //        var currentCustomer = (from c in db.CustomerModels where c.ApplicationUserId == userId select c).FirstOrDefault();
+        //        currentCustomer.SpecialPickupDate = customerModels.SpecialPickupDate;
+                
+
+
+        //        db.SaveChanges();
+        //        return RedirectToAction("SpecialDetails", new { id = customerModels.Id });
+        //    }
+
+
+        //    return View(customerModels);
+        //}
+
+        public ActionResult SpecialDetails()
+        {
+
+            var FoundUserId = User.Identity.GetUserId();
+            CustomerModels customer = db.CustomerModels.Where(c => c.ApplicationUserId == FoundUserId).FirstOrDefault();
+            return View(customer);
+        }
+
+        public ActionResult EditSpecialPickup(int? id)
+        {
+
+            CustomerModels customer = db.CustomerModels.Find(id);
+
+            return View(customer);
+        }
+        // POST: Customer/Edit/5
+        [HttpPost]
+        public ActionResult EditSpecial([Bind(Include = " SpecialPickupDate")] CustomerModels customerModels, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                CustomerModels updatedCustomer = db.CustomerModels.Find(id);
+                if (updatedCustomer == null)
+                {
+                    return RedirectToAction("DisplayError", "Customer");
+                }
+                updatedCustomer.SpecialPickupDate = customerModels.SpecialPickupDate;
+               
+
+                db.Entry(updatedCustomer).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("DetailsOfSpecialPickup");
+            }
+            return View(customerModels);
+        }
 
 
     }

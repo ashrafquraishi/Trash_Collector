@@ -147,49 +147,19 @@ namespace TrashCollecter.Controllers
         [HttpPost]
         public ActionResult CreateSpecialPickup([Bind(Include = "SpecialPickupDate")] CustomerModels customerModels)
         {
-            
-                var userId = User.Identity.GetUserId();
-                customerModels.ApplicationUserId = userId;
 
-                var currentCustomer = (from c in db.CustomerModels where c.ApplicationUserId == userId select c).FirstOrDefault();
-                currentCustomer.SpecialPickupDate = customerModels.SpecialPickupDate;
+            var userId = User.Identity.GetUserId();
+            customerModels.ApplicationUserId = userId;
 
-                db.SaveChanges();
-                return RedirectToAction("SpecialDetails", new { id = customerModels.Id });
-            
+            var currentCustomer = (from c in db.CustomerModels where c.ApplicationUserId == userId select c).FirstOrDefault();
+            currentCustomer.SpecialPickupDate = customerModels.SpecialPickupDate;
 
-            return View(customerModels);
+            db.SaveChanges();
+            return RedirectToAction("SpecialDetails", new { id = customerModels.Id });
+
+        
+          return View(customerModels);
         }
-
-
-
-
-
-
-
-
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult CreateSpecialPickup([Bind(Include = "SpecialPickupDate")]CustomerModels customerModels)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-
-        //        var userId = User.Identity.GetUserId();
-        //        customerModels.ApplicationUserId = userId;
-        //        var currentCustomer = (from c in db.CustomerModels where c.ApplicationUserId == userId select c).FirstOrDefault();
-        //        currentCustomer.SpecialPickupDate = customerModels.SpecialPickupDate;
-                
-
-
-        //        db.SaveChanges();
-        //        return RedirectToAction("SpecialDetails", new { id = customerModels.Id });
-        //    }
-
-
-        //    return View(customerModels);
-        //}
 
         public ActionResult SpecialDetails()
         {
@@ -226,6 +196,56 @@ namespace TrashCollecter.Controllers
             }
             return View(customerModels);
         }
+
+        public ActionResult SuspendingAccount()
+        {
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult SuspendingAccount([Bind(Include = "VacationStart,VacationEnd")] CustomerModels customerModels)
+        {
+
+            var userId = User.Identity.GetUserId();
+            customerModels.ApplicationUserId = userId;
+
+            var currentCustomer = (from c in db.CustomerModels where c.ApplicationUserId == userId select c).FirstOrDefault();
+            currentCustomer.VacationStart = customerModels.VacationStart;
+            currentCustomer.VacationEnd = customerModels.VacationEnd;
+            db.SaveChanges();
+            return RedirectToAction("AccountDetails", new { id = customerModels.Id });
+
+
+            //  return View(customerModels);
+        }
+
+        public ActionResult AccountDetails()
+        {
+
+            var FoundUserId = User.Identity.GetUserId();
+            CustomerModels customer = db.CustomerModels.Where(c => c.ApplicationUserId == FoundUserId).FirstOrDefault();
+            return View(customer);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

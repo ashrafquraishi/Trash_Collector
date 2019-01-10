@@ -294,6 +294,8 @@
     <Content Include="Views\Employee\DefaultZip.cshtml" />
     <Content Include="Views\Customer\CreateSpecialPickup.cshtml" />
     <Content Include="Views\Customer\SpecialDetails.cshtml" />
+    <Content Include="Views\Customer\AccountDetails.cshtml" />
+    <Content Include="Views\Customer\SuspendingAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

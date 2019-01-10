@@ -1,0 +1,39 @@
+﻿@model TrashCollecter.Models.CustomerModels
+
+@{
+    ViewBag.Title = "AccountDetails";
+}
+
+<h2>Account Details</h2>
+
+
+<div>
+    <h4>CustomerModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacationStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacationStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacationEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacationEnd)
+        </dd>
+
+      
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+   
+</p>

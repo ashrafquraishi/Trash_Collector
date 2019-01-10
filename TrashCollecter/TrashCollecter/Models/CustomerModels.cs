@@ -35,12 +35,12 @@ namespace TrashCollecter.Models
         [Display(Name = "Account Suspend Start Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime VacationStart { get; set; }
+        public DateTime? VacationStart { get; set; }
 
         [Display(Name = "Account Suspend End Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime VacationEnd { get; set; }
+        public DateTime? VacationEnd { get; set; }
 
 
 
@@ -48,6 +48,7 @@ namespace TrashCollecter.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? SpecialPickupDate { get; set; }
+        public bool? Confirm { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }

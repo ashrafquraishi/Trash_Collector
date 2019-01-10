@@ -221,6 +221,14 @@
     <Compile Include="Migrations\201901101746375_added special pickup in customer model.Designer.cs">
       <DependentUpon>201901101746375_added special pickup in customer model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901101813421_adding.cs" />
+    <Compile Include="Migrations\201901101813421_adding.Designer.cs">
+      <DependentUpon>201901101813421_adding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901101822436_added nullables .cs" />
+    <Compile Include="Migrations\201901101822436_added nullables .Designer.cs">
+      <DependentUpon>201901101822436_added nullables .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerModels.cs" />
@@ -300,11 +308,6 @@
     <Content Include="Views\PickUp\Details.cshtml" />
     <Content Include="Views\PickUp\Index.cshtml" />
     <Content Include="Views\PickUp\Create.cshtml" />
-    <Content Include="Views\SpecialPickup\Index.cshtml" />
-    <Content Include="Views\SpecialPickup\Details.cshtml" />
-    <Content Include="Views\SpecialPickup\Create.cshtml" />
-    <Content Include="Views\SpecialPickup\Edit.cshtml" />
-    <Content Include="Views\SpecialPickup\Delete.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
@@ -346,6 +349,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901101746375_added special pickup in customer model.resx">
       <DependentUpon>201901101746375_added special pickup in customer model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901101813421_adding.resx">
+      <DependentUpon>201901101813421_adding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901101822436_added nullables .resx">
+      <DependentUpon>201901101822436_added nullables .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

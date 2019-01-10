@@ -56,6 +56,9 @@ namespace TrashCollecter.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = User.Identity.GetUserId();
+                customerModels.ApplicationUserId = userId; 
+
                 db.CustomerModels.Add(customerModels);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = customerModels.Id });
@@ -83,7 +86,7 @@ namespace TrashCollecter.Controllers
             {
                 db.Entry(customerModels).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
             return View(customerModels);
         }

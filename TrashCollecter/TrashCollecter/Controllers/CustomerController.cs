@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -18,8 +19,7 @@ namespace TrashCollecter.Controllers
         public ActionResult Index()
         {
 
-            //var userEmail = User.Identity.Name;
-            //var customer = db..Include(a => a.Customer).Include(d => d.Day).Single(c => c.Customer.Email == userEmail);
+            
             return View(db.CustomerModels.ToList());
 
 
@@ -133,5 +133,35 @@ namespace TrashCollecter.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult CreateSpecialPickup()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateSpecialPickup([Bind(Include = "SpecialPickupDate")]CustomerModels customerModels)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var userId = User.Identity.GetUserId();
+                customerModels.ApplicationUserId = userId;
+                var currentCstomer = (from c in db.CustomerModels where c.ApplicationUserId == userId select c).FirstOrDefault();
+                currentCstomer.SpecialPickupDate = customerModels.SpecialPickupDate;
+                
+
+
+                db.SaveChanges();
+                return RedirectToAction("DetailsOfSpecialPickup", new { id = customerModels.Id });
+            }
+
+
+            return View(customerModels);
+        }
+
+
+
+
+
     }
 }

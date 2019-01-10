@@ -33,7 +33,7 @@ namespace TrashCollecter.Models
 
         public System.Data.Entity.DbSet<TrashCollecter.Models.CustomerModels> CustomerModels { get; set; }
       
-        public System.Data.Entity.DbSet<TrashCollecter.Models.SpecialPickup> SpecialPickups { get; set; }
+      
         
 
     }

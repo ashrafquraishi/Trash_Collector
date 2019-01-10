@@ -80,11 +80,25 @@ namespace TrashCollecter.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Address,ZipCode,City,State,PickUpDay")] CustomerModels customerModels)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Address,ZipCode,City,State,PickUpDay")] CustomerModels customerModels,int id)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customerModels).State = EntityState.Modified;
+                CustomerModels updatedCustomer = db.CustomerModels.Find(id);
+                if (updatedCustomer == null)
+                {
+                    return RedirectToAction("DisplayError", "Customer");
+                }
+                updatedCustomer.FirstName = customerModels.FirstName;
+                updatedCustomer.LastName = customerModels.LastName;
+                updatedCustomer.Email = customerModels.Email;
+                updatedCustomer.Address = customerModels.Address;
+                updatedCustomer.ZipCode = customerModels.ZipCode;
+                updatedCustomer.City = customerModels.City;
+                updatedCustomer.State = customerModels.State;
+                updatedCustomer.PickUpDay = customerModels.PickUpDay;
+
+                db.Entry(updatedCustomer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Details");
             }
@@ -180,8 +194,7 @@ namespace TrashCollecter.Controllers
         [HttpPost]
         public ActionResult EditSpecial([Bind(Include = " SpecialPickupDate")] CustomerModels customerModels, int id)
         {
-            if (ModelState.IsValid)
-            {
+           
                 CustomerModels updatedCustomer = db.CustomerModels.Find(id);
                 if (updatedCustomer == null)
                 {
@@ -193,7 +206,7 @@ namespace TrashCollecter.Controllers
                 db.Entry(updatedCustomer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("DetailsOfSpecialPickup");
-            }
+            
             return View(customerModels);
         }
 
@@ -230,7 +243,33 @@ namespace TrashCollecter.Controllers
         }
 
 
+        public ActionResult EditSuspendingAccount(int? id)
+        {
 
+            CustomerModels customer = db.CustomerModels.Find(id);
+
+            return View(customer);
+        }
+        // POST: Customer/Edit/5
+        [HttpPost]
+        public ActionResult EditSuspendingAccount([Bind(Include = "VacationStart,VacationEnd")] CustomerModels customerModels, int id)
+        {
+
+            CustomerModels updatedCustomer = db.CustomerModels.Find(id);
+            if (updatedCustomer == null)
+            {
+                return RedirectToAction("DisplayError", "Customer");
+            }
+            updatedCustomer.VacationStart = customerModels.VacationStart;
+            updatedCustomer.VacationEnd = customerModels.VacationEnd;
+
+
+            db.Entry(updatedCustomer).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("DetailsOfSpecialPickup");
+
+            return View(customerModels);
+        }
 
 
 

@@ -30,18 +30,21 @@ namespace TrashCollecter.Models
         [DisplayName("Pick Up Day")]
 
         public DayOfWeek PickUpDay { get; set; }
+       
+
+        [Display(Name = "Account Suspend Start Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime VacationStart { get; set; }
+
+        [Display(Name = "Account Suspend End Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime VacationEnd { get; set; }
+
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
-
-        //public bool IsActive { get; set; }
-        //[ForeignKey("AddressModel")]
-        //public int AddressId { get; set; }
-        //public AddressModel AddressModel { get; set; }
-
-        //     public decimal Balance { get; set; }
-
-
 
 
 

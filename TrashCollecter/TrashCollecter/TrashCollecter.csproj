@@ -196,10 +196,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PickUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,15 +209,20 @@
     <Compile Include="Migrations\201901092001594_thing22.Designer.cs">
       <DependentUpon>201901092001594_thing22.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901101727488_test.cs" />
+    <Compile Include="Migrations\201901101727488_test.Designer.cs">
+      <DependentUpon>201901101727488_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901101736353_removed daymodel.cs" />
+    <Compile Include="Migrations\201901101736353_removed daymodel.Designer.cs">
+      <DependentUpon>201901101736353_removed daymodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\CustomerModels.cs" />
-    <Compile Include="Models\Daymodel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SpecialPickup.cs" />
-    <Compile Include="Controllers\SpecialPickupController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -328,6 +331,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901092001594_thing22.resx">
       <DependentUpon>201901092001594_thing22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901101727488_test.resx">
+      <DependentUpon>201901101727488_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901101736353_removed daymodel.resx">
+      <DependentUpon>201901101736353_removed daymodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -21,13 +21,23 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Edit Profile", "Edit", "Customer")</li>
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li>@Html.ActionLink("Suspend Account", "SuspendingAccount", "Customer")</li>
+                        <li>@Html.ActionLink("Special Pickup", "CreateSpecialPickup", "Customer")</li>
+                        <li>@Html.ActionLink("View Profile", "Details", "Customer")</li>
+                        <li>@Html.ActionLink("Create Profile", "Create", "Customer")</li>
 
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Suspend Account", "SuspendingAccount", "Customer")</li>
-                    <li>@Html.ActionLink("Special Pickup", "CreateSpecialPickup", "Customer")</li>
+
+
+                    }
+                    @if (User.IsInRole("Employee"))
+                    {
+
+
+                        <li>@Html.ActionLink("View Today Pickups", "Index", "Customer")</li>
+                        <li>@Html.ActionLink("Check By WeekDay", "WeekDay", "Employee")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

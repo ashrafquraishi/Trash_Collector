@@ -1,48 +1,46 @@
 ﻿@model IEnumerable<TrashCollecter.Models.CustomerModels>
 
 @{
-    ViewBag.Title = "DefaultPickups";
+    ViewBag.Title = "SelectedDay";
 }
 
-<h2>DefaultPickups</h2>
+<h2>View Searched @(ViewBag.dayToSee) pickups:</h2>
 
-
-<table class="table table-hover">
-    <tr class="table-primary">
-        <th scope="col">
+<table class="table">
+    <tr>
+        <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.Address)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.ZipCode)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.City)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.State)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.VacationStart)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.VacationEnd)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.SpecialPickupDate)
         </th>
-        <th scope="col">
-            @Html.DisplayNameFor(model => model.Confirm)
-        </th>
-        
+       
+      
+
         <th></th>
     </tr>
 
@@ -50,7 +48,7 @@
     {
         foreach (var item in Model)
         {
-            <tr class="table-info">
+            <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
@@ -81,17 +79,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.SpecialPickupDate)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Confirm)
-                </td>
+               
 
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                 
                     @Html.ActionLink("Details", "CustomerDetails", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+         
                 </td>
             </tr>
         }
     }
-
     </table>

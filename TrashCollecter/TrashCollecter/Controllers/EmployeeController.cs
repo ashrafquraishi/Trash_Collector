@@ -11,13 +11,13 @@ namespace TrashCollecter.Controllers
     public class EmployeeController : Controller
     {
         public ApplicationDbContext db = new ApplicationDbContext();
-   
+
 
 
 
         public ActionResult Weekday()
         {
-            
+
             return View();
         }
         [HttpPost, ActionName("Weekday")]
@@ -152,13 +152,37 @@ namespace TrashCollecter.Controllers
         }
 
 
+        public ActionResult SelectedDay(string day)
+        {
+            List<CustomerModels>SelectedDayCustomer = new List<CustomerModels>();
+            var userId = User.Identity.GetUserId();
+            var EmployeeLoggedIn = (from e in db.EmployeeModels where e.ApplicationUserId == userId select e).FirstOrDefault();
+            var custZipCode = (from c in db.CustomerModels where c.ZipCode == EmployeeLoggedIn.ZipCode select c).ToList();
+            if (custZipCode.Any())
+            {
+                foreach (var customer in custZipCode)
+                {
+                    var pickupDate = customer.SpecialPickupDate.ToString();
+                    string ParticularPickup = null;
+
+                    if (pickupDate != "")
+                    {
+                        ParticularPickup = DateTime.Parse(pickupDate).DayOfWeek.ToString();
+                    }
+                    if ((customer.PickUpDay.ToString() == day || ParticularPickup == day))
+
+                    {
+                        SelectedDayCustomer.Add(customer);
+                    }
 
 
 
+                }
+            }
 
-
-
-       
+                ViewBag.dayToSee = day;
+                return View(SelectedDayCustomer);
+           
+        }
     }
 }
-

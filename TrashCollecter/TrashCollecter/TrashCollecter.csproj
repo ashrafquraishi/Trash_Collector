@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201901102346309_checking.Designer.cs">
       <DependentUpon>201901102346309_checking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901111945471_deleted and added customer.cs" />
+    <Compile Include="Migrations\201901111945471_deleted and added customer.Designer.cs">
+      <DependentUpon>201901111945471_deleted and added customer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerModels.cs" />
@@ -282,7 +286,6 @@
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\PickUp\Delete.cshtml" />
     <Content Include="Views\PickUp\Edit.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
@@ -299,6 +302,8 @@
     <Content Include="Views\Employee\CustomerDetails.cshtml" />
     <Content Include="Views\Employee\DefaultPickups.cshtml" />
     <Content Include="Views\Employee\Weekday.cshtml" />
+    <Content Include="Views\Employee\SelectedDay.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -322,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901102346309_checking.resx">
       <DependentUpon>201901102346309_checking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901111945471_deleted and added customer.resx">
+      <DependentUpon>201901111945471_deleted and added customer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

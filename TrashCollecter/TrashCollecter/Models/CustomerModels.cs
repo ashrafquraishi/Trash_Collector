@@ -10,6 +10,7 @@ namespace TrashCollecter.Models
 {
     public class CustomerModels
     {
+
         [Key]
         public int Id { get; set; }
         [Required]
@@ -30,7 +31,7 @@ namespace TrashCollecter.Models
         [DisplayName("Pick Up Day")]
 
         public DayOfWeek PickUpDay { get; set; }
-       
+
 
         [Display(Name = "Account Suspend Start Date")]
         [DataType(DataType.Date)]

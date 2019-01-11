@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -151,7 +152,33 @@ namespace TrashCollecter.Controllers
             }
         }
 
+        
+        public ActionResult TrashCollectedConfirm(int? id)
+        {
 
+            CustomerModels customer = db.CustomerModels.Find(id);
+
+            return View(customer);
+        }
+        [HttpPost]
+        public ActionResult TrashCollectedConfirm([Bind(Include = " Confirm")] CustomerModels customer, int id)
+        {
+            
+
+                CustomerModels updatedCustomer = db.CustomerModels.Find(id);
+                if (updatedCustomer == null)
+                {
+                    return RedirectToAction("DisplayError", "Customer");
+                }
+                updatedCustomer.Confirm = customer.Confirm;
+
+
+                db.Entry(updatedCustomer).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("DefaultPickups");
+         
+            return View(customer);
+        }
         public ActionResult SelectedDay(string day)
         {
             List<CustomerModels>SelectedDayCustomer = new List<CustomerModels>();

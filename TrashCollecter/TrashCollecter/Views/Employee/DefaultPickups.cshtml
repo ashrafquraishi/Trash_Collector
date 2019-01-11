@@ -39,9 +39,7 @@
         <th scope="col">
             @Html.DisplayNameFor(model => model.SpecialPickupDate)
         </th>
-        <th scope="col">
-            @Html.DisplayNameFor(model => model.Confirm)
-        </th>
+        
         
         <th></th>
     </tr>
@@ -81,12 +79,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.SpecialPickupDate)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Confirm)
-                </td>
+               
 
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Trash Collected", "TrashCollectedConfirm", new { id = item.Id }) |
                     @Html.ActionLink("Details", "CustomerDetails", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>

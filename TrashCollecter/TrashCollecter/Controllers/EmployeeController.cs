@@ -11,7 +11,20 @@ namespace TrashCollecter.Controllers
     public class EmployeeController : Controller
     {
         public ApplicationDbContext db = new ApplicationDbContext();
-        // GET: Employee
+   
+
+
+
+        public ActionResult Weekday()
+        {
+            
+            return View();
+        }
+        [HttpPost, ActionName("Weekday")]
+        public ActionResult Weekday(string chosenDay)
+        {
+            return RedirectToAction("SelectedDay", new { day = chosenDay });
+        }
         public ActionResult Index()
         {
             return View(db.EmployeeModels.ToList());
@@ -127,7 +140,7 @@ namespace TrashCollecter.Controllers
             else
             {
                 var AnalyzePickups = db.CustomerModels.Where(c => (c.SpecialPickupDate == ScheduledDate || c.PickUpDay.ToString() == ScheduledDay));
-if (!AnalyzePickups.Any())
+                if (!AnalyzePickups.Any())
                 {
                     return View();
                 }
@@ -136,8 +149,16 @@ if (!AnalyzePickups.Any())
                     return View(AnalyzePickups);
                 }
             }
-
         }
+
+
+
+
+
+
+
+
+       
     }
 }
 

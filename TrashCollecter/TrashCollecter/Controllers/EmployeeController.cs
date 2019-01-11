@@ -44,7 +44,7 @@ namespace TrashCollecter.Controllers
 
                 db.EmployeeModels.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("EmployeeTodayPickups", new { id = employee.Id });
+                return RedirectToAction("Details", new { id = employee.Id });
             }
 
 
@@ -64,7 +64,7 @@ namespace TrashCollecter.Controllers
 
         // POST: Employee/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = " Id,FirstName,LastName,Email,Address,State,City,ZipCode")] EmployeeModels employee,int Id)
+        public ActionResult Edit([Bind(Include = " Id,FirstName,LastName,Email,Address,State,City,ZipCode")] EmployeeModels employee, int Id)
         {
             if (ModelState.IsValid)
             {
@@ -84,15 +84,15 @@ namespace TrashCollecter.Controllers
                 return RedirectToAction("Details");
             }
             return View(employee);
-        
-    }
+
+        }
 
         public ActionResult CustomerDetails(int? id)
         {
             CustomerModels customer = null;
             if (id == null)
             {
-               
+
 
                 var UserId = User.Identity.GetUserId();
 
@@ -113,5 +113,31 @@ namespace TrashCollecter.Controllers
             return View(customer);
         }
 
+        public ActionResult DefaultPickups()
+        {
+            var userId = User.Identity.GetUserId();
+            var EmployeeLoggedin = (from e in db.EmployeeModels where e.ApplicationUserId == userId select e).FirstOrDefault();
+            var ScheduledDay = DateTime.Now.DayOfWeek.ToString();
+            var ScheduledDate = DateTime.Now.Date;
+            var cusZipCode = (from c in db.CustomerModels where c.ZipCode == EmployeeLoggedin.ZipCode select c).ToList();
+            if (!cusZipCode.Any())
+            {
+                return View();
+            }
+            else
+            {
+                var AnalyzePickups = db.CustomerModels.Where(c => (c.SpecialPickupDate == ScheduledDate || c.PickUpDay.ToString() == ScheduledDay));
+if (!AnalyzePickups.Any())
+                {
+                    return View();
+                }
+                else
+                {
+                    return View(AnalyzePickups);
+                }
+            }
+
+        }
     }
 }
+

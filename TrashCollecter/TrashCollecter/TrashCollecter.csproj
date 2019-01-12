@@ -214,6 +214,10 @@
     <Compile Include="Migrations\201901111945471_deleted and added customer.Designer.cs">
       <DependentUpon>201901111945471_deleted and added customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901120129486_added a property.cs" />
+    <Compile Include="Migrations\201901120129486_added a property.Designer.cs">
+      <DependentUpon>201901120129486_added a property.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerModels.cs" />
@@ -331,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901111945471_deleted and added customer.resx">
       <DependentUpon>201901111945471_deleted and added customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901120129486_added a property.resx">
+      <DependentUpon>201901120129486_added a property.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

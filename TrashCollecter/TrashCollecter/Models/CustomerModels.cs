@@ -50,12 +50,12 @@ namespace TrashCollecter.Models
         [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? SpecialPickupDate { get; set; }
         public bool? Confirm { get; set; }
-
+        public double? bill { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
-
+     
 
 
 

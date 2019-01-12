@@ -24,7 +24,7 @@ namespace TrashCollecter.Controllers
         [HttpPost, ActionName("Weekday")]
         public ActionResult Weekday(string chosenDay)
         {
-            return RedirectToAction("SelectedDay", new { day = chosenDay });
+            return RedirectToAction("DefaultPickups", new { day = chosenDay });
         }
         public ActionResult Index()
         {
@@ -56,7 +56,7 @@ namespace TrashCollecter.Controllers
                 var currentUser = (from u in db.Users where u.Id == userId select u).First();
                 employee.ApplicationUserId = userId;
 
-                db.EmployeeModels.Add(employee);
+             db.EmployeeModels.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = employee.Id });
             }

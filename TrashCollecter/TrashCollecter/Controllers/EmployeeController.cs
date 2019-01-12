@@ -24,7 +24,7 @@ namespace TrashCollecter.Controllers
         [HttpPost, ActionName("Weekday")]
         public ActionResult Weekday(string chosenDay)
         {
-            return RedirectToAction("DefaultPickups", new { day = chosenDay });
+            return RedirectToAction("SelectedDay", new { day = chosenDay });
         }
         public ActionResult Index()
         {
@@ -140,7 +140,7 @@ namespace TrashCollecter.Controllers
             }
             else
             {
-                var AnalyzePickups = db.CustomerModels.Where(c => (c.SpecialPickupDate == ScheduledDate || c.PickUpDay.ToString() == ScheduledDay));
+                var AnalyzePickups = db.CustomerModels.Where(c => (c.SpecialPickupDate == ScheduledDate || c.PickUpDay.ToString() == ScheduledDay)&& c.ZipCode == EmployeeLoggedin.ZipCode).ToList(); ;
                 if (!AnalyzePickups.Any())
                 {
                     return View();

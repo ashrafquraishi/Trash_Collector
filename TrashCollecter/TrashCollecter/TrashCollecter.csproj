@@ -309,6 +309,7 @@
     <Content Include="Views\Employee\SelectedDay.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Employee\TrashCollectedConfirm.cshtml" />
+    <Content Include="Views\Customer\CheckBalance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

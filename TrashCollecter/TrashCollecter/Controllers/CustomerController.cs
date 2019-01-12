@@ -272,8 +272,33 @@ namespace TrashCollecter.Controllers
         }
 
 
+        public double? ChargingACustomer(CustomerModels customer)
+        {
+            customer.bill = customer.bill += 5;
+
+            var charge = customer.bill;
+            return charge;
+        }
 
 
+        public ActionResult CheckBalance(int? id)
+        {
+            var userId = User.Identity.GetUserId();
+            //customer.ApplicationUserId = userId;
+            var currentCustomer = (from c in db.CustomerModels where c.ApplicationUserId == userId select c).FirstOrDefault();
+            currentCustomer.Confirm = true;
+            currentCustomer.bill = 0;
+
+            var charge = ChargingACustomer(currentCustomer);
+
+            if (currentCustomer != null) currentCustomer.bill = charge;
+            if (currentCustomer != null) currentCustomer.Confirm = true;
+
+            db.Entry(currentCustomer).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return View(currentCustomer);
+        }
 
 
 

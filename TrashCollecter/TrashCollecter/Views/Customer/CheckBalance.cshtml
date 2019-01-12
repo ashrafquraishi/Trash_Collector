@@ -1,0 +1,31 @@
+﻿@model TrashCollecter.Models.CustomerModels
+
+@{
+    ViewBag.Title = "CheckBalance";
+}
+
+<h2>CheckBalance</h2>
+<h3>@Model.FirstName, here is a summary of your accounts due: </h3>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bill):
+        </dt>
+        <dd>
+            $@Html.DisplayFor(model => model.bill).00
+        </dd>
+    </dl>
+
+<form action="your-server-side-code" method="POST">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+            data-amount="@ViewBag.Fee"
+            data-name="Stripe.com"
+            data-description="charge"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto"
+            data-zip-code="false">
+    </script>
+</form>
+</div>

@@ -1,10 +1,10 @@
 ﻿@model TrashCollecter.Models.CustomerModels
 
 @{
-    ViewBag.Title = "CustomerDetails";
+    ViewBag.Title = "Customer Details for " + Model.FirstName + " " + Model.LastName;
 }
 
-<h2>CustomerDetails</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
     <h4>CustomerModels</h4>
@@ -108,3 +108,119 @@
 
     </dl>
 </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        #map {
+            height: 520px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <!-- Single User Map
+    <script>
+        var geocoder;
+        var map;
+
+        function initMap() {
+            geocoder = new google.maps.Geocoder();
+            var mapOptions = {
+                zoom: 8,
+                center: { lat: 43.0115, lng: -87.9735 }
+            }
+
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            var street = "@Model.Address";
+            var zip = "@Model.ZipCode";
+
+            //var street = "@ViewBag.Address";
+            //var zip = "@ViewBag.ZipCode";
+            var address = (street + " " + zip + " ");
+
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        animation: google.maps.Animation.BOUNCE,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    -->
+
+    <script>
+        var geocoder;
+        var map;
+        var markersArray = [];
+
+        var locationsArray = new Array("2133 n 27th St, MW, WI", "2134 n 27th St, MW, WI");
+
+        function initMap() {
+            geocoder = new google.maps.Geocoder();
+
+            //The map to plot the points
+            map = new google.maps.Map(document.getElementById('map'), myOptions);
+
+            latlang = geocoder.geocode({ lat: 43.0115, lng: -87.9735 },
+
+                function (results, status) {
+
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                        marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                        });
+                        markersArray.push(marker);
+
+                    } else {
+                        alert("Geocode was not successful for the following reason: " + status);
+                    }
+                });
+
+            var myOptions = {
+                center: latlang,
+                zoom: 5
+            };
+
+            //A function to plot each point
+            function plotMarkers() {
+                for (var i = 0; i < locationsArray.length; i++) {
+                    codeAddresses(locationsArray[i]);
+                }
+            }
+
+            //A function to turn each address into points
+            function codeAddresses(address) {
+                geocoder.geocode({
+                    'address': address
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                        marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                        });
+                    } else {
+                        alert("Geocode was not successful for the following reason: " + status);
+                    }
+                });
+            }
+        }
+    </script>
+    <!-- Asynchronous load map after loading web page then call map initialize function -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnG-Bofe_gSBPhvaqdNBYkRGONr6U0gys&callback=initMap" type="text/javascript"></script>
+</body>
+</html>

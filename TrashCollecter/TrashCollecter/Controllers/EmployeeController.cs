@@ -56,7 +56,7 @@ namespace TrashCollecter.Controllers
                 var currentUser = (from u in db.Users where u.Id == userId select u).First();
                 employee.ApplicationUserId = userId;
 
-             db.EmployeeModels.Add(employee);
+                db.EmployeeModels.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = employee.Id });
             }
@@ -106,15 +106,25 @@ namespace TrashCollecter.Controllers
             CustomerModels customer = null;
             if (id == null)
             {
-
-
                 var UserId = User.Identity.GetUserId();
 
                 customer = db.CustomerModels.Where(c => c.ApplicationUserId == UserId).FirstOrDefault();
+                var firstname = (from c in db.CustomerModels where c.ApplicationUserId == UserId select c.FirstName).FirstOrDefault();
+                var lastname = (from c in db.CustomerModels where c.ApplicationUserId == UserId select c.LastName).FirstOrDefault();
+                var address = (from c in db.CustomerModels where c.ApplicationUserId == UserId select c.Address).FirstOrDefault();
+                var zipcode = (from c in db.CustomerModels where c.ApplicationUserId == UserId select c.ZipCode).FirstOrDefault();
+
+                //Store into View Bag to be retrieved in View page
+                ViewBag.Address = address;
+                ViewBag.Zip = zipcode;
+                ViewBag.CustomerName = firstname + " " + lastname;
+
+                //TEST Multiple Addresses
+                var alladdressess = (from a in db.CustomerModels where a.Address != null select a.Address).FirstOrDefault();
+                ViewBag.AddressList = alladdressess;
+
                 return View(customer);
-
             }
-
             else
             {
                 customer = db.CustomerModels.Find(id);
@@ -140,7 +150,7 @@ namespace TrashCollecter.Controllers
             }
             else
             {
-                var AnalyzePickups = db.CustomerModels.Where(c => (c.SpecialPickupDate == ScheduledDate || c.PickUpDay.ToString() == ScheduledDay)&& c.ZipCode == EmployeeLoggedin.ZipCode).ToList(); ;
+                var AnalyzePickups = db.CustomerModels.Where(c => (c.SpecialPickupDate == ScheduledDate || c.PickUpDay.ToString() == ScheduledDay) && c.ZipCode == EmployeeLoggedin.ZipCode).ToList(); ;
                 if (!AnalyzePickups.Any())
                 {
                     return View();
@@ -152,7 +162,7 @@ namespace TrashCollecter.Controllers
             }
         }
 
-        
+
         public ActionResult TrashCollectedConfirm(int? id)
         {
 
@@ -163,25 +173,25 @@ namespace TrashCollecter.Controllers
         [HttpPost]
         public ActionResult TrashCollectedConfirm([Bind(Include = " Confirm")] CustomerModels customer, int id)
         {
-            
-
-                CustomerModels updatedCustomer = db.CustomerModels.Find(id);
-                if (updatedCustomer == null)
-                {
-                    return RedirectToAction("DisplayError", "Customer");
-                }
-                updatedCustomer.Confirm = customer.Confirm;
 
 
-                db.Entry(updatedCustomer).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("DefaultPickups");
-         
+            CustomerModels updatedCustomer = db.CustomerModels.Find(id);
+            if (updatedCustomer == null)
+            {
+                return RedirectToAction("DisplayError", "Customer");
+            }
+            updatedCustomer.Confirm = customer.Confirm;
+
+
+            db.Entry(updatedCustomer).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("DefaultPickups");
+
             return View(customer);
         }
         public ActionResult SelectedDay(string day)
         {
-            List<CustomerModels>SelectedDayCustomer = new List<CustomerModels>();
+            List<CustomerModels> SelectedDayCustomer = new List<CustomerModels>();
             var userId = User.Identity.GetUserId();
             var EmployeeLoggedIn = (from e in db.EmployeeModels where e.ApplicationUserId == userId select e).FirstOrDefault();
             var custZipCode = (from c in db.CustomerModels where c.ZipCode == EmployeeLoggedIn.ZipCode select c).ToList();
@@ -207,9 +217,9 @@ namespace TrashCollecter.Controllers
                 }
             }
 
-                ViewBag.dayToSee = day;
-                return View(SelectedDayCustomer);
-           
+            ViewBag.dayToSee = day;
+            return View(SelectedDayCustomer);
+
         }
     }
 }

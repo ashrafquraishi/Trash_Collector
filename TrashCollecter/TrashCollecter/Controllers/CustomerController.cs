@@ -19,15 +19,15 @@ namespace TrashCollecter.Controllers
         public ActionResult Index()
         {
 
-            
+
             return View(db.CustomerModels.ToList());
 
 
         }
-    
+
         // GET: CustomerModels/Details/5
         public ActionResult Details(int? id)
-        {                                                                                                                                                                                                                                                                                                                                  
+        {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -57,7 +57,7 @@ namespace TrashCollecter.Controllers
             if (ModelState.IsValid)
             {
                 var userId = User.Identity.GetUserId();
-                customerModels.ApplicationUserId = userId; 
+                customerModels.ApplicationUserId = userId;
 
                 db.CustomerModels.Add(customerModels);
                 db.SaveChanges();
@@ -70,7 +70,7 @@ namespace TrashCollecter.Controllers
         // GET: CustomerModels/Edit/5
         public ActionResult Edit(int? id)
         {
-            
+
             CustomerModels customerModels = db.CustomerModels.Find(id);
             return View(customerModels);
         }
@@ -80,7 +80,7 @@ namespace TrashCollecter.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Address,ZipCode,City,State,PickUpDay")] CustomerModels customerModels,int id)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Address,ZipCode,City,State,PickUpDay")] CustomerModels customerModels, int id)
         {
             if (ModelState.IsValid)
             {
@@ -119,7 +119,7 @@ namespace TrashCollecter.Controllers
             }
             return View(customerModels);
         }
-       // [HttpPost]
+        // [HttpPost]
         public ActionResult FilterByDate(string date)
         {
             var SearchDate = from m in db.CustomerModels
@@ -140,7 +140,7 @@ namespace TrashCollecter.Controllers
             db.CustomerModels.Remove(customerModels);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }  
+        }
 
         protected override void Dispose(bool disposing)
         {
@@ -153,7 +153,7 @@ namespace TrashCollecter.Controllers
 
         public ActionResult CreateSpecialPickup()
         {
-            
+
             return View();
         }
 
@@ -171,8 +171,8 @@ namespace TrashCollecter.Controllers
             db.SaveChanges();
             return RedirectToAction("SpecialDetails", new { id = customerModels.Id });
 
-        
-          return View(customerModels);
+
+            //return View(customerModels);
         }
 
         public ActionResult SpecialDetails()
@@ -194,20 +194,20 @@ namespace TrashCollecter.Controllers
         [HttpPost]
         public ActionResult EditSpecial([Bind(Include = " SpecialPickupDate")] CustomerModels customerModels, int id)
         {
-           
-                CustomerModels updatedCustomer = db.CustomerModels.Find(id);
-                if (updatedCustomer == null)
-                {
-                    return RedirectToAction("DisplayError", "Customer");
-                }
-                updatedCustomer.SpecialPickupDate = customerModels.SpecialPickupDate;
-               
 
-                db.Entry(updatedCustomer).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("DetailsOfSpecialPickup");
-            
-            return View(customerModels);
+            CustomerModels updatedCustomer = db.CustomerModels.Find(id);
+            if (updatedCustomer == null)
+            {
+                return RedirectToAction("DisplayError", "Customer");
+            }
+            updatedCustomer.SpecialPickupDate = customerModels.SpecialPickupDate;
+
+
+            db.Entry(updatedCustomer).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("DetailsOfSpecialPickup");
+
+            //return View(customerModels);
         }
 
         public ActionResult SuspendingAccount()
@@ -268,7 +268,7 @@ namespace TrashCollecter.Controllers
             db.SaveChanges();
             return RedirectToAction("DetailsOfSpecialPickup");
 
-            return View(customerModels);
+            //return View(customerModels);
         }
 
 

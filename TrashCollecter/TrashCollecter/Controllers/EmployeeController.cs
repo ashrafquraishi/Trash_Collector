@@ -221,5 +221,41 @@ namespace TrashCollecter.Controllers
             return View(SelectedDayCustomer);
 
         }
+
+        public ActionResult MultiplePins(int? id)
+        {
+            CustomerModels customer = null;
+            if (id == null)
+            {
+                var UserId = User.Identity.GetUserId();
+
+                customer = db.CustomerModels.Where(c => c.ApplicationUserId == UserId).FirstOrDefault();
+                var firstname = (from c in db.CustomerModels where c.ApplicationUserId == UserId select c.FirstName).FirstOrDefault();
+                var lastname = (from c in db.CustomerModels where c.ApplicationUserId == UserId select c.LastName).FirstOrDefault();
+                var address = (from c in db.CustomerModels where c.ApplicationUserId == UserId select c.Address).FirstOrDefault();
+                var zipcode = (from c in db.CustomerModels where c.ApplicationUserId == UserId select c.ZipCode).FirstOrDefault();
+
+                //Store into View Bag to be retrieved in View page
+                ViewBag.Address = address;
+                ViewBag.Zip = zipcode;
+                ViewBag.CustomerName = firstname + " " + lastname;
+
+                //TEST Multiple Addresses
+                var alladdressess = (from a in db.CustomerModels where a.Address != null select a.Address).FirstOrDefault();
+                ViewBag.AddressList = alladdressess;
+
+                return View(customer);
+            }
+            else
+            {
+                customer = db.CustomerModels.Find(id);
+            }
+
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
+        }
     }
 }

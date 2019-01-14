@@ -1,0 +1,71 @@
+﻿@model TrashCollecter.Models.CustomerModels
+
+@{
+    ViewBag.Title = "MultiplePins";
+}
+
+<h2>MultiplePins</h2>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        #map {
+            height: 520px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    Single User Map
+    <script>
+        var geocoder;
+        var map;
+        var markersArray = [];
+
+        var locationsArray = new Array("2133 n 27th St, MW, WI", "2134 n 27th St, MW, WI");
+
+        function initMap() {
+            geocoder = new google.maps.Geocoder();
+            var mapOptions = {
+                zoom: 8,
+                center: { lat: 43.0115, lng: -87.9735 }
+            }
+
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            @*var street = "@Model.Address";
+            var zip = "@Model.ZipCode";*@
+
+            var street = "4036 S 76th st";
+            var zip = "53220";
+            var street = "2092  S 102nd st";
+            var zip = "53227";
+            var address = (street + " " + zip + " ");
+            function plotMarkers() {
+                for (var i = 0; i < locationsArray.length; i++) {
+                    codeAddresses(locationsArray[i]);
+                }
+            }
+
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        animation: google.maps.Animation.BOUNCE,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnG-Bofe_gSBPhvaqdNBYkRGONr6U0gys&callback=initMap" type="text/javascript"></script>
+</body>
+</html>
